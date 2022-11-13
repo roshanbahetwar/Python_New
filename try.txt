@@ -1,0 +1,32 @@
+import re
+
+def line_fetch_pattern_match(lp):
+    mobile_list =[]
+    for line in lp:
+        m1 = re.findall("[5-9]{1}[0-9]{9}", line)
+        if len(m1) == 0:
+            continue
+        else:
+            mobile_list.append(m1[0])
+    return mobile_list
+
+def file_read(filepath):
+    fp = open(filepath)
+    data =fp.readlines()
+    return data
+
+def main():
+    print("entering into main function")
+    file_path = 'mobile.txt'
+    print("call list of lines")
+    list_of_lines_data = file_read(file_path)
+    print("fetching mobiles from line fetch ")
+    mobiles = line_fetch_pattern_match(list_of_lines_data)
+    print("mobiles")
+    print(mobiles)
+    print("end of the program")
+    
+    return mobiles
+
+if __name__=='__main__':
+    main()
